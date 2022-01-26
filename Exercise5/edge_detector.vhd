@@ -33,7 +33,7 @@ begin
 end process;
 
 --1st state machine process.
-process(cur_state1_s, strobe_i)
+process(cur_state1_s)
 begin
   case cur_state1_s is
      when zero =>        --when current state is "zero"
@@ -85,7 +85,7 @@ begin
   end case;
 end process;
 
---2nd state machine process.
+--3rd state machine process.
 process(cur_state3_s, strobe_i)
 begin
   case cur_state3_s is
@@ -113,6 +113,8 @@ begin
      when others => null;
   end case;
 end process;
+
+
 
 p1_o <= '1' when cur_state1_s = edge else
        '0';

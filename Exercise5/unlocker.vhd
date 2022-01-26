@@ -17,14 +17,12 @@ signal cur_state_s, next_state_s : state_type;  --current and next state declara
 
 begin  -- architecture rtl
 
-process(clk_i)
-begin
-    if (rising_edge(clk_i)) then
-        if rst_i='1' then
-            cur_state_s <= s0;
-        else
+process(clk_i, rst_i)
+begin  -- corrected rst
+    if rst_i = '1' then
+        cur_state_s <= s0;
+    elsif (rising_edge(clk_i)) then
         cur_state_s <= next_state_s;
-        end if;
     end if;
 end process; 
 
