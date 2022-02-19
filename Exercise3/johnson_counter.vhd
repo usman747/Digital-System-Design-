@@ -40,23 +40,23 @@ rst_i           : in  std_logic;
 jc_out_o           : out std_logic_vector(3 downto 0));
 
 
-end johnson_counter;
+end entity johnson_counter;
 
 architecture rtl of johnson_counter is
 
 signal temp_cont : std_logic_vector(3 downto 0) := (others => '0');
 begin
 
-process(clk_i)
+process(clk_i) is
 begin
  if rising_edge (clk_i) then
         if rst_i = '1' then
              temp_cont <= "0000";
         else
-             temp_cont(1) <= temp_cont(0);
-             temp_cont(2) <= temp_cont(1);
-             temp_cont(3) <= temp_cont(2);
-             temp_cont(0) <= not temp_cont(3);
+             temp_cont(3) <= not temp_cont(0);
+             temp_cont(2) <= temp_cont(3);
+             temp_cont(1) <= temp_cont(2);
+             temp_cont(0) <= temp_cont(1);
         end if;
  end if;
 end process;

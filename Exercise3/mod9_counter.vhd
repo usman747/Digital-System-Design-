@@ -21,7 +21,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use ieee.std_logic_unsigned.all;
+--use ieee.std_logic_unsigned.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -54,10 +54,12 @@ begin
         if rst_i = '1' then
             count_temp <= (others=>'0');
         else
-            if (count_temp = 8) then
+--            if (count_temp = 8) then
+              if (count_temp = std_logic_vector(TO_UNSIGNED(8,count_temp'length))) then --   USE THIS
                 count_temp <= (others=>'0');
             else
-                count_temp <= count_temp + 1;
+              --count_temp <= count_temp + 1;
+              count_temp <= std_logic_vector(unsigned(count_temp) + 1); -- USE THIS AS COOL LIB NOT ALLOWED MAYBE
             end if;
         end if;
     end if; 

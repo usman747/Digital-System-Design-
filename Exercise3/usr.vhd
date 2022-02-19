@@ -33,7 +33,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity usr is
 generic(
-width : natural:= 8
+width : integer:= 8
 );
 port(
 clk_i : in std_logic;
