@@ -22,6 +22,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.numeric_std.all;
+use IEEE.math_real.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -45,7 +46,7 @@ architecture rtl of var_len_decoder is
 begin
 with bits_i select
 symbols_o <= "100" when "1111",
-            "011" when "1110",
+            std_logic_vector(to_unsigned(3,symbols_o'length)) when "1110",
             "010" when "110-",
             "001" when "10--",-- the "X" symbol for don't care was not working and output was going into others condition
             "000" when "0---",
